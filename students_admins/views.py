@@ -229,7 +229,7 @@ def manage_reference_amounts(request):
     reference_amount = ReferenceAmount.objects.first()  # Récupérer le premier objet ReferenceAmount
     return render(request, 'students_admins/manage_reference_amounts.html', {'reference_amount': reference_amount})
 
-@login_required(login_url='loginUser')
+
 def update_students_amounts(reference_amount):
     students = Student.objects.all()
     for student in students:
@@ -488,8 +488,8 @@ def check_rfid(request):
             student = Student.objects.get(cardId=card_id)
             if student.has_access_one:
                 response_data = {
-                    'status': 'authorized',
-                    'student_name': student.student_name.capitalize,
+                    'status': 'Authorized',
+                    'student_name': student.student_name,
                     'roll_number': student.roll_number,
                     'message': 'Authorised'
                 }
@@ -527,15 +527,15 @@ def check_rfid(request):
                     exam_status.save()
             else:
                 response_data = {
-                    'status': 'not authorized',
+                    'status': 'Not authorized',
                     'student_name': student.student_name,
                     'roll_number': student.roll_number,
                     'message': 'Not authorised'
                 }
         except Student.DoesNotExist:
             response_data = {
-                'status': 'unrecognized',
-                'message': 'unrecognised'
+                'status': 'Unrecognized',
+                'message': 'Unrecognised'
             }
 
         return JsonResponse(response_data)
