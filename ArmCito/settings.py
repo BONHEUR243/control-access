@@ -42,7 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Custom_user.apps.CustomUserConfig',
     'students_admins.apps.StudentsAdminsConfig',
+    
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+CLOUDINARY_STORAGE={
+    'CLOUD_NAME':'dhxxc2p5h',
+    'API_KEY':'886635225278531',
+    'API_SECRET':'ISHufGs1iQ69NIeID4tQuHZLzU8'
+}
+
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
@@ -144,7 +155,7 @@ USE_TZ = True
 
 
 MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/static/images')
 
 
 # Static files (CSS, JavaScript, Images)
