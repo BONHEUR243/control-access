@@ -224,7 +224,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Type of Exam:</label>
-                            <div class="col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
                               <select id="type_exam" name="type_exam" class="form-control">
                                 <option value="CAT2">CAT2</option>
                                 <option value="FAT">FAT</option>
@@ -253,7 +253,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="level">Class: </label>
-                            <div class="col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
                               <select id="level" name="level"  class="form-control" required>
                                 {% for level in levels %}
                                     <option value="{{ level.id }}">{{ level }}</option>

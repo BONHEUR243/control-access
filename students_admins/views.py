@@ -201,7 +201,7 @@ def manage_students(request):
 @login_required(login_url='loginUser')
 def manage_reference_amounts(request):
     if request.method == 'POST':
-        try:
+        
             # Récupérer les données soumises par le formulaire
             amount_normal = request.POST.get('amount_normal')
             amount_type_b = request.POST.get('amount_type_b')
@@ -221,9 +221,7 @@ def manage_reference_amounts(request):
 
             messages.success(request, 'Reference amounts updated successfully.')
             return redirect('manage_students')
-        except:
-            messages.error(request, 'Please enter valid amount!')
-            return redirect('manage_reference_amounts')
+        
 
     # Si la méthode HTTP n'est pas POST (affichage du formulaire)
     reference_amount = ReferenceAmount.objects.first()  # Récupérer le premier objet ReferenceAmount
@@ -534,8 +532,10 @@ def check_rfid(request):
                 }
         except Student.DoesNotExist:
             response_data = {
-                'status': 'Unrecognized',
-                'message': 'Unrecognised'
+                'status': 'Unregistered card',
+                'student_name': '-',
+                'roll_number': '-',
+                'message': 'Unregistered card'
             }
 
         return JsonResponse(response_data)
